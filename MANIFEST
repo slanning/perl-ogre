@@ -184,6 +184,7 @@ perlobject.map
 t/000_use.t
 t/010_constants.t
 t/100_vector3.t
+t/101_vector2.t
 t/110_plane.t
 t/120_quaternion.t
 t/200_colourvalue.t
