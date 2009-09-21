@@ -159,6 +159,7 @@ examples/README.txt
 examples/animate.pl
 examples/buffered.pl
 examples/cameratrack.pl
+examples/darksky.pl
 examples/gtk2robot.pl
 examples/lighting.pl
 examples/listeningninja.pl
