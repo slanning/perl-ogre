@@ -1,18 +1,22 @@
+Setup required to run examples
+
 This directory contains examples of using the Perl bindings
 for OGRE. To run the examples, you need to have two config files
 in the current directory: plugins.cfg and resources.cfg.
+
 plugins.cfg might be a pointer to a system-wide file;
 for example, on Ubuntu you should `ln -s /etc/OGRE/plugins.cfg`.
-resources.cfg is just taken from the Samples directory in OGRE,
-but I put it here also. For resources.cfg, you also need to copy
-all the Samples/Media/ directory from OGRE 1.4.3 into ogrenew-1.4.3/
-in this directory (look in resources.cfg, you can change the names
-if you want):
 
-  mkdir -p ogrenew-1.4.3/Samples/Media
-  cp -r /tmp/ogrenew-1.4.3/Samples/Media/* ogrenew-1.4.3/Samples/Media/
+resources.cfg is taken from the Samples/Common/bin directory in OGRE,
+but I put it here also. For resources.cfg, you need to make sure
+it points to the Samples directory from OGRE 1.6.
+(It's important to point to 1.6 media, not 1.4, because some
+of the syntax has changed. You can edit resources.cfg to point
+wherever you want.) If you checked out Ogre's source from subversion
+as mentioned in README.txt, then create a symlink to the Samples
+directory like this:
 
-(That's like 26MB, so I can't distribute it on CPAN. :)
+  ln -s $HOME/ogre/src/ogre/v1-6/Samples
 
 Here are brief descriptions of the examples.
 
@@ -34,15 +38,15 @@ Here are brief descriptions of the examples.
 - sky.pl: demo of Terrain, Sky, and Fog, this implements OGRE's
   "Basic Tutorial 3"
 
+- darksky.pl: same as sky.pl but more evil-looking
+
 - animate.pl: watch the robot walk
   (note: this is still a little incomplete, so the robot will "moonwalk"
    once he reaches the first waypoint - I have to wrap a few more Node
    and Quaternion methods, and fix some overloaded operators)
 
 - gtk2robot.pl, wx.pl: this is NOT WORKING YET, but if it were it should
-  show how to make gtk2 and wxPerl work with Ogre. I think the problem is
-  more that the example I copied it from doesn't work, rather than the Perl
-  version per se.
+  show how to make gtk2 and wxPerl work with Ogre.
 
 - cameratrack.pl: demo of animation tracks and camera auto-tracking,
   implements OGRE's "CameraTrack" sample application

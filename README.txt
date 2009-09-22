@@ -139,7 +139,7 @@ http://www.ogre3d.org/developers/subversion
 
 I checked out both trunk and the 1.6 branch with:
 
-  cd
+  cd ~/ogre/src/
   svn co https://svn.ogre3d.org/svnroot/ogre/trunk         \
          https://svn.ogre3d.org/svnroot/ogre/branches/v1-6 \
            ogre
