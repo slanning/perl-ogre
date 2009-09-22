@@ -1,3 +1,8 @@
+0.37 2009-09-22 | update examples
+- the instructions in the examples directory still said to use
+  Ogre 1.4 media, but in fact 1.6 media are required now
+  due to incompatibilities
+
 0.36 2009-09-15 | update for Ogre version 1.6
 - this breaks a little backward-compatibility, but not enough
   to affect any of the examples. I doubt I'll worry about

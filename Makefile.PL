@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 use strict;
 use warnings;
 
-my $MIN_OGRE_VERSION = '1.6.1';
+my $OGRE_REQ_VERSION = '1.6.1';
 my $OIS_REQ_VERSION = '0.04';
 
 main();
@@ -64,7 +64,7 @@ sub varied_args {
     my $pkgname = 'OGRE';
 
     my @errors = ();
-    push @errors, check_pkg_config($pkgname, $MIN_OGRE_VERSION);
+    push @errors, check_pkg_config($pkgname, $OGRE_REQ_VERSION);
     if (@errors) {
         die(map { "$_$/" } @errors);
     }
