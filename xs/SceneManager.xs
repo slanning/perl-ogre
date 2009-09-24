@@ -1,5 +1,7 @@
 MODULE = Ogre     PACKAGE = Ogre::SceneManager
 
+## no constructor
+
 String
 SceneManager::getName()
 
@@ -18,7 +20,7 @@ bool
 SceneManager::hasCamera(name)
     String  name
 
-## xxx: virtual void 	destroyCamera (Camera *cam)
+## xxx: missing: virtual void 	destroyCamera (Camera *cam)
 void
 SceneManager::destroyCamera(name)
     String  name
@@ -38,6 +40,9 @@ bool
 SceneManager::hasLight(name)
     String  name
 
+## virtual const PlaneList & 	getLightClippingPlanes (Light *l)
+## virtual const RealRect & 	getLightScissorRect (Light *l, const Camera *cam)
+
 ## xxx: virtual void 	destroyLight (Light *light)
 void
 SceneManager::destroyLight(name)
@@ -51,6 +56,7 @@ SceneNode *
 SceneManager::createSceneNode(name)
     String  name
 
+## xxx: virtual void 	destroySceneNode (SceneNode *sn)
 void
 SceneManager::destroySceneNode(name)
     String  name
@@ -66,7 +72,7 @@ bool
 SceneManager::hasSceneNode(name)
     String  name
 
-## xxx: also  Entity * createEntity (const String &entityName, PrefabType ptype)
+## xxx:   Entity * createEntity (const String &entityName, PrefabType ptype)
 Entity *
 SceneManager::createEntity(entityName, meshName)
     String entityName
@@ -148,7 +154,7 @@ SceneManager::destroyRibbonTrail(name)
 void
 SceneManager::destroyAllRibbonTrails()
 
-## xxx: also   ParticleSystem * 	createParticleSystem (const String &name, size_t quota=500, const String &resourceGroup=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME)
+## xxx:   ParticleSystem * 	createParticleSystem (const String &name, size_t quota=500, const String &resourceGroup=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME)
 ParticleSystem *
 SceneManager::createParticleSystem(name, templateName)
     String  name
@@ -190,6 +196,11 @@ SceneManager::setAmbientLight(colour)
     *colour
 
 ## const ColourValue & getAmbientLight()
+
+## xxx: virtual void 	prepareWorldGeometry (DataStreamPtr &stream, const String &typeName=StringUtil::BLANK)
+void
+SceneManager::prepareWorldGeometry(filename)
+    String filename
 
 ## xxx: void 	setWorldGeometry (DataStreamPtr &stream, const String &typeName=StringUtil::BLANK)
 void
@@ -237,7 +248,7 @@ SceneManager::isSkyPlaneEnabled()
 SceneNode *
 SceneManager::getSkyPlaneNode()
 
-## xxx: this returns a struct; could return individual values instead
+## xxx: this returns a struct; could return a hashref instead
 ## virtual const SkyPlaneGenParameters & 	getSkyPlaneGenParameters (void) const
 
 void
@@ -257,7 +268,8 @@ SceneManager::isSkyBoxEnabled()
 SceneNode *
 SceneManager::getSkyBoxNode()
 
-## xxx: const SkyBoxGenParameters & 	getSkyBoxGenParameters (void) const
+## xxx: this returns a struct; could return a hashref instead
+## virtual const SkyBoxGenParameters & 	getSkyBoxGenParameters (void) const
 
 void
 SceneManager::setSkyDome(enable, materialName, curvature=10, tiling=8, distance=4000, drawFirst=true, orientation=&Quaternion::IDENTITY, xsegments=16, ysegments=16, ysegments_keep=-1, groupName=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME)
@@ -281,7 +293,8 @@ SceneManager::isSkyDomeEnabled()
 SceneNode *
 SceneManager::getSkyDomeNode()
 
-## xxx: const SkyDomeGenParameters & 	getSkyDomeGenParameters (void) const
+## xxx: this returns a struct; could return a hashref instead
+## virtual const SkyDomeGenParameters & 	getSkyDomeGenParameters (void) const
 
 void
 SceneManager::setFog(mode=FOG_NONE, colour=&ColourValue::White, expDensity=0.001, linearStart=0.0, linearEnd=1.0)
@@ -374,7 +387,6 @@ SceneManager::destroyAnimationState(name)
 void
 SceneManager::destroyAllAnimationStates()
 
-
 void
 SceneManager::manualRender(rend, pass, vp, worldMatrix, viewMatrix, projMatrix, doBeginEndFrame=false)
     RenderOperation * rend
@@ -390,6 +402,7 @@ SceneManager::manualRender(rend, pass, vp, worldMatrix, viewMatrix, projMatrix, 
 RenderQueue *
 SceneManager::getRenderQueue()
 
+## xxx:
 ## void 	addRenderQueueListener (RenderQueueListener *newListener)
 ## void 	removeRenderQueueListener (RenderQueueListener *delListener)
 
@@ -426,7 +439,6 @@ SceneManager::showBoundingBoxes(bShow)
 bool
 SceneManager::getShowBoundingBoxes()
 
-## AxisAlignedBoxSceneQuery * createAABBQuery (const AxisAlignedBox &box, unsigned long mask=0xFFFFFFFF)
 AxisAlignedBoxSceneQuery *
 SceneManager::createAABBQuery(box, mask=0xFFFFFFFF)
     AxisAlignedBox * box
@@ -468,6 +480,7 @@ void
 SceneManager::destroyQuery(query)
     SceneQuery * query
 
+## xxx: we would presumably want arefs
 ## CameraIterator 	getCameraIterator (void)
 ## AnimationIterator 	getAnimationIterator (void)
 ## AnimationStateIterator 	getAnimationStateIterator (void)
@@ -510,6 +523,9 @@ SceneManager::setShadowFarDistance(distance)
 Real
 SceneManager::getShadowFarDistance()
 
+Real
+SceneManager::getShadowFarDistanceSquared()
+
 void 
 SceneManager::setShadowIndexBufferSize(size)
     size_t  size
@@ -528,6 +544,7 @@ SceneManager::setShadowTextureConfig(size_t shadowIndex, unsigned short width, u
   C_ARGS:
      shadowIndex, width, height, (PixelFormat)format
 
+## xxx: aref
 ## ConstShadowTextureConfigIterator SceneManager::getShadowTextureConfigIterator()
 
 void 
@@ -540,6 +557,18 @@ SceneManager::setShadowTextureCount(size_t count)
 
 size_t 
 SceneManager::getShadowTextureCount()
+
+void 
+SceneManager::setShadowTextureCountPerLightType(type, count)
+    int     type
+    size_t  count
+  C_ARGS:
+    (Ogre::Light::LightTypes)type, count
+
+size_t 
+SceneManager::getShadowTextureCountPerLightType(int type)
+  C_ARGS:
+    (Ogre::Light::LightTypes)type
 
 void 
 SceneManager::setShadowTextureSettings(unsigned short size, unsigned short count, int fmt=PF_X8R8G8B8)
@@ -604,8 +633,14 @@ SceneManager::isShadowTechniqueIntegrated()
 bool 
 SceneManager::isShadowTechniqueInUse()
 
-## void SceneManager::addShadowListener(ShadowListener *s)
-## void SceneManager::removeShadowListener(ShadowListener *s)
+void
+SceneManager::setShadowUseLightClipPlanes(bool enabled)
+
+bool
+SceneManager::getShadowUseLightClipPlanes()
+
+## virtual void 	addListener (Listener *s)
+## virtual void 	removeListener (Listener *s)
 
 StaticGeometry *
 SceneManager::createStaticGeometry(name)
@@ -681,6 +716,7 @@ SceneManager::hasMovableObject(name, typeName)
     String  name
     String  typeName
 
+## xxx: aref
 ## MovableObjectIterator 	getMovableObjectIterator (const String &typeName)
 
 void
@@ -709,6 +745,15 @@ SceneManager::setFindVisibleObjects(bool find)
 bool
 SceneManager::getFindVisibleObjects()
 
+bool
+SceneManager::getNormaliseNormalsOnScale()
+
+void
+SceneManager::setFlipCullingOnNegativeScale(bool n)
+
+bool
+SceneManager::getFlipCullingOnNegativeScale()
+
 ## void 	setQueuedRenderableVisitor (SceneMgrQueuedRenderableVisitor *visitor)
 ## SceneMgrQueuedRenderableVisitor * 	getQueuedRenderableVisitor (void) const
 
@@ -718,6 +763,24 @@ SceneManager::getDestinationRenderSystem()
 Viewport *
 SceneManager::getCurrentViewport()
 
-## xxx: these return a struct
+## xxx: these return a struct, could return a hashref
 ## const VisibleObjectsBoundsInfo & 	getVisibleObjectsBoundsInfo (const Camera *cam) const
 ## const VisibleObjectsBoundsInfo & 	getShadowCasterBoundsInfo (const Light *light) const
+
+void
+SceneManager::setCameraRelativeRendering(bool rel)
+
+bool
+SceneManager::getCameraRelativeRendering()
+
+
+### static public attributes
+
+## xxx:
+##static uint32 	WORLD_GEOMETRY_TYPE_MASK
+##static uint32 	ENTITY_TYPE_MASK
+##static uint32 	FX_TYPE_MASK
+##static uint32 	STATICGEOMETRY_TYPE_MASK
+##static uint32 	LIGHT_TYPE_MASK
+##static uint32 	FRUSTUM_TYPE_MASK
+##static uint32 	USER_TYPE_MASK_LIMIT
