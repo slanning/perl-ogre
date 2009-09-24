@@ -1,5 +1,7 @@
 MODULE = Ogre     PACKAGE = Ogre::Root
 
+# static Root & 	getSingleton (void)
+
 static Root *
 Root::getSingletonPtr()
 
@@ -45,6 +47,9 @@ Root::showConfigDialog()
 void
 Root::addRenderSystem(RenderSystem *newRend)
 
+# RenderSystemList *
+# Root::getAvailableRenderers()
+
 RenderSystem *
 Root::getRenderSystemByName(String name)
 
@@ -54,6 +59,7 @@ Root::setRenderSystem(RenderSystem *system)
 RenderSystem *
 Root::getRenderSystem()
 
+# no customCapabilitiesConfig arg
 RenderWindow *
 Root::initialise(autoCreateWindow, ...)
     bool    autoCreateWindow
@@ -73,7 +79,10 @@ Root::initialise(autoCreateWindow, ...)
 bool
 Root::isInitialised()
 
-# addSceneManagerFactory, ...
+# void  useCustomRenderSystemCapabilities (RenderSystemCapabilities *capabilities)
+# void 	addSceneManagerFactory (SceneManagerFactory *fact)
+# void 	removeSceneManagerFactory (SceneManagerFactory *fact)
+# SceneManagerEnumerator::MetaDataIterator 	getSceneManagerMetaDataIterator (void) const
 
 ## note: there are 2 variants of this in the C++ API
 SceneManager *
@@ -101,7 +110,6 @@ Root::createSceneManager(...)
   OUTPUT:
     RETVAL
 
-
 void
 Root::destroySceneManager(sm)
     SceneManager * sm
@@ -109,6 +117,9 @@ Root::destroySceneManager(sm)
 SceneManager *
 Root::getSceneManager(instanceName)
     String  instanceName
+
+# xxx: need a perlish version, like ConfigFile::getSections
+# SceneManagerEnumerator::SceneManagerIterator 	getSceneManagerIterator (void)
 
 TextureManager *
 Root::getTextureManager()
@@ -147,6 +158,11 @@ Root::shutdown()
 
 void
 Root::addResourceLocation(String name, String locType, String groupName=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, bool recursive=false)
+
+void
+Root::removeResourceLocation(String name, String groupName=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME)
+
+# void 	convertColourValue (const ColourValue &colour, uint32 *pDest)
 
 RenderWindow *
 Root::getAutoCreatedWindow()
@@ -208,6 +224,8 @@ Root::createRenderWindow(name, width, height, fullScreen, ...)
               params["outerDimensions"] = String((char *) SvPV(* hv_fetch(paramsHash, "outerDimensions", 15, 0), l));
             if (hv_exists(paramsHash, "useNVPerfHUD", 12))
               params["useNVPerfHUD"] = String((char *) SvPV(* hv_fetch(paramsHash, "useNVPerfHUD", 12, 0), l));
+            if (hv_exists(paramsHash, "gamma", 5))
+              params["gamma"] = String((char *) SvPV(* hv_fetch(paramsHash, "gamma", 5, 0), l));
 
             RETVAL = THIS->createRenderWindow(name, width, height, fullScreen, &params);
         }
@@ -215,7 +233,8 @@ Root::createRenderWindow(name, width, height, fullScreen, ...)
   OUTPUT:
     RETVAL
 
-# xxx: 2 versions
+# xxx: 2 C++ versions, RenderTarget * version missing
+# but you can get the name from the RenderTarget object
 void
 Root::detachRenderTarget(name)
     String  name
@@ -232,14 +251,24 @@ void
 Root::unloadPlugin(pluginName)
     String  pluginName
 
-# installPlugin, uninstallPlugin, ..., getTimer
+# void 	installPlugin (Plugin *plugin)
+# void 	uninstallPlugin (Plugin *plugin)
+# const PluginInstanceList & 	getInstalledPlugins () const
+
+# Timer * 	getTimer (void)
 
 unsigned long
 Root::getNextFrameNumber()
 
+# RenderQueueInvocationSequence * 	createRenderQueueInvocationSequence (const String &name)
+# RenderQueueInvocationSequence * 	getRenderQueueInvocationSequence (const String &name)
 
-# ...
+void
+Root::destroyRenderQueueInvocationSequence(name)
+    String  name
 
+void
+Root::destroyAllRenderQueueInvocationSequences()
 
 void
 Root::clearEventTimes()
@@ -251,5 +280,19 @@ Root::setFrameSmoothingPeriod(period)
 Real
 Root::getFrameSmoothingPeriod()
 
+# void 	addMovableObjectFactory (MovableObjectFactory *fact, bool overrideExisting=false)
+# void 	removeMovableObjectFactory (MovableObjectFactory *fact)
 
-# ...
+bool
+Root::hasMovableObjectFactory(typeName)
+    String  typeName
+
+# MovableObjectFactory * 	getMovableObjectFactory (const String &typeName)
+# MovableObjectFactoryIterator 	getMovableObjectFactoryIterator (void) const
+
+
+### protected types
+
+### protected member functions
+
+# xxx: possible/useful to bind these?
