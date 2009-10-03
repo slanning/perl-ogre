@@ -168,6 +168,7 @@ examples/ninja.pl
 examples/particleFX.pl
 examples/resources.cfg
 examples/robot.pl
+examples/sdlrobot.pl
 examples/skeletalanim.pl
 examples/sky.pl
 examples/terrain.pl
