@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use Time::HiRes qw/time usleep/;
+
 use Ogre 0.38 qw(:SceneType);
 use Ogre::ConfigFile;
 use Ogre::ColourValue;
@@ -13,8 +15,8 @@ use Ogre::RenderWindow;
 use Ogre::TextureManager;
 
 use SDL;
-use SDL::Constants qw/SDL_INIT_VIDEO SDL_OPENGL/;
 use SDL::Event;
+use SDL::App;
 
 my ($W, $H, $D) = (1024, 768, 0);
 
@@ -26,9 +28,14 @@ exit;
 # http://www.ogre3d.org/wiki/index.php/Hello_World_with_minimal_Ogre_init
 # http://www.ogre3d.org/wiki/index.php/Using_SDL_Input#New.2C_Experimental_Way_.28OGRE_v1.6_and_Later.29
 sub main {
-    SDL::Init(SDL_INIT_VIDEO);
-    my $screen = SDL::SetVideoMode($W, $H, $D, SDL_OPENGL);
-    SDL::WMSetCaption('SDL Window Title', 'SDL Icon Title');
+    my $app = SDL::App->new(
+        '-title'            => 'Ogre on SDL',
+        '-width'            => $W,
+        '-height'           => $H,
+        '-depth'            => $D,
+        '-opengl'           => 1,
+        #'-double_buffer'    => 1,
+    );
 
     my $root = Ogre::Root->new('plugins.cfg', 'ogre.cfg', 'Ogre.log');
     defineResources();
@@ -36,18 +43,23 @@ sub main {
 
     $root->initialise(0);               # tell Ogre not to make an OpenGL window
 
+    # this is how it works on Linux, at least -
+    # will need some work on Windows
     my $renderwindow = $root->createRenderWindow(
         'OgreRenderWindow', $W, $H, 0,
         {currentGLContext => 'True'},   # tell Ogre to use the SDL OpenGL context
     );
 
     Ogre::ResourceGroupManager->getSingletonPtr->initialiseAllResourceGroups();
-
     $renderwindow->setVisible(1);
 
     my $cam = setupScene($root, $renderwindow);
+    moveCamPos($cam, 200);
 
     #my $framelistener = createFrameListener($root, $renderwindow, $cam);
+
+
+    # $app->grab_input(....);
 
     mainLoop($root, $renderwindow, $cam);
 }
@@ -55,25 +67,39 @@ sub main {
 sub mainLoop {
     my ($root, $renderwindow, $cam) = @_;
 
-#     my $event = SDL::Event->new();
-#     $event->poll();                         # Get the top one from the queue
-#         while ($event->wait()) {
-#                my $type = $event->type();      # get event type
-#                # ... handle event
-#                exit if $type == SDL_QUIT;
-#         }
+    my $event = SDL::Event->new();
 
+    my $done = 0;
+    GAMELOOP: while (!$done) {
+        sync_to(1);
+        $event->pump();
 
-    moveCamPos($cam, 200);
-    renderOne($root);
+        while ($event->poll()) {
+            if (($event->type == SDL_QUIT) || ($event->key_sym eq SDLK_q)) {
+                $done = 1;
+                last;
+            }
+            if ($event->key_sym == SDLK_RIGHT) {
+                moveCamPos($cam, 200);
+            }
+            elsif ($event->key_sym == SDLK_LEFT) {
+                moveCamPos($cam, -200);
+            }
+            renderOne($root);
+        }
 
-    # again, just to make sure it's rendering
-    moveCamPos($cam, -200);
-    sleep 1;
-    renderOne($root);
+        last GAMELOOP if $done;
+    }
+}
 
-    sleep 2;
+sub sync_to {
+    my $n = shift;
 
+    # xxx: figure out time to sleep
+    # my $t = time;
+
+    my $sleep = 100000;
+    usleep ($sleep);
 }
 
 sub createFrameListener {
@@ -84,7 +110,7 @@ sub renderOne {
     my ($root) = @_;
 
     $root->renderOneFrame();            # Ogre renders to the SDL window
-    SDL::GLSwapBuffers();
+#    SDL::GLSwapBuffers();
 }
 
 sub moveCamPos {
@@ -145,35 +171,3 @@ sub defineResources {
         }
     }
 }
-
-
-
-__END__
-
-use SDL::App;
-use SDL::Color;
-use SDL::Rect;
-
-my $app = SDL::App->new(
-    '-width'  => 640,
-    '-height' => 480,
-    '-depth'  => 16,
-    '-title'  => 'My SDL Program',
-);
-
-my $color = SDL::Color->new(
-    '-r' => 0x00,
-    '-g' => 0x00,
-    '-b' => 0xff,
-);
-my $rect = SDL::Rect->new(
-    '-height' => 100,
-    '-width'  => 100,
-    '-x'      => 270,
-    '-y'      => 390,
-);
-
-$app->fill($rect, $color);
-$app->update($rect);
-
-sleep 3;
