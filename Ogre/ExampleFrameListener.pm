@@ -4,7 +4,7 @@ package Ogre::ExampleFrameListener;
 use strict;
 use warnings;
 
-use Ogre 0.27 qw(:TextureFilterOptions :PolygonMode);
+use Ogre 0.38 qw(:TextureFilterOptions :PolygonMode);
 use Ogre::Degree;
 use Ogre::OverlayManager;
 use Ogre::LogManager;
@@ -13,7 +13,7 @@ use Ogre::Vector3;
 use Ogre::WindowEventUtilities;
 
 # keep CPAN indexer from barfing on OIS below
-our $VERSION = 0.27;
+our $VERSION = 0.38;
 
 BEGIN {
     if (eval { require OIS && $OIS::VERSION >= 0.04 }) {
