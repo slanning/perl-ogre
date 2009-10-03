@@ -7,7 +7,7 @@ use warnings;
 require DynaLoader;
 our @ISA = qw(DynaLoader);
 
-our $VERSION = '0.37';
+our $VERSION = '0.38';
 
 # use all files under Ogre/ - probably not a good idea
 ## BEGIN USES

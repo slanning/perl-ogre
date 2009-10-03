@@ -1,3 +1,8 @@
+0.38 2009-10-03 | render Ogre in SDL-perl
+- added currentGLContext param for Root->createRenderWindow,
+  which at least in Linux allows rendering Ogre in SDL's GL context
+- added sdlrobot.pl example
+
 0.37 2009-09-22 | update examples
 - the instructions in the examples directory still said to use
   Ogre 1.4 media, but in fact 1.6 media are required now
