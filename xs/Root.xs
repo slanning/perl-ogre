@@ -208,8 +208,11 @@ Root::createRenderWindow(name, width, height, fullScreen, ...)
               params["externalWindowHandle"] = String((char *) SvPV(* hv_fetch(paramsHash, "externalWindowHandle", 20, 0), l));
             if (hv_exists(paramsHash, "externalGLControl", 17))
               params["externalGLControl"] = String((char *) SvPV(* hv_fetch(paramsHash, "externalGLControl", 17, 0), l));
+            // externalGLContext is deprecated
             if (hv_exists(paramsHash, "externalGLContext", 17))
               params["externalGLContext"] = String((char *) SvPV(* hv_fetch(paramsHash, "externalGLContext", 17, 0), l));
+            if (hv_exists(paramsHash, "currentGLContext", 16))
+              params["currentGLContext"] = String((char *) SvPV(* hv_fetch(paramsHash, "currentGLContext", 16, 0), l));
             if (hv_exists(paramsHash, "parentWindowHandle", 18))
               params["parentWindowHandle"] = String((char *) SvPV(* hv_fetch(paramsHash, "parentWindowHandle", 18, 0), l));
             if (hv_exists(paramsHash, "FSAA", 4))

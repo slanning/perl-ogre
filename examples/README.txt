@@ -45,8 +45,8 @@ Here are brief descriptions of the examples.
    once he reaches the first waypoint - I have to wrap a few more Node
    and Quaternion methods, and fix some overloaded operators)
 
-- gtk2robot.pl, wx.pl: this is NOT WORKING YET, but if it were it should
-  show how to make gtk2 and wxPerl work with Ogre.
+#- gtk2robot.pl, wx.pl: NOT WORKING YET, but if it were it should
+#  show how to make gtk2 and wxPerl work with Ogre.
 
 - cameratrack.pl: demo of animation tracks and camera auto-tracking,
   implements OGRE's "CameraTrack" sample application
@@ -68,3 +68,5 @@ Here are brief descriptions of the examples.
 
 - manualobject.pl: use ManualObject to draw arbitrary shapes
   (taken from several wiki articles)
+
+- sdlrobot.pl: render Ogre in an SDL-Perl application
