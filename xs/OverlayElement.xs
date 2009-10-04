@@ -61,10 +61,6 @@ OverlayElement::setMaterialName(String matName)
 
 ## void 	getWorldTransforms (Matrix4 *xform)
 
-## const Quaternion & 	getWorldOrientation (void)
-
-## const Vector3 & 	getWorldPosition (void)
-
 String
 OverlayElement::getTypeName()
 
