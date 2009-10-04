@@ -1,5 +1,7 @@
 Lots of stuff left to do....
 
+update : http://www.ogre3d.org/wiki/index.php/ShoggothNotes
+
 - A lot of methods that return objects (instead of pointers)
   haven't been wrapped. It's because I'm not sure if I handle
   them right. For example, this method of SceneNode
