@@ -1,3 +1,7 @@
+0.39 2009-10-04 | getWorldPosition, getWorldOrientation removed
+- API change for Ogre 1.6, these are not in Renderable and have
+  been renamed in Node to _getDerivedPosition and _getDerivedOrientation
+
 0.38 2009-10-03 | render Ogre in SDL-perl
 - added currentGLContext param for Root->createRenderWindow,
   which at least in Linux allows rendering Ogre in SDL's GL context
