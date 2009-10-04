@@ -346,6 +346,25 @@ Node::getRenderOperation(OUTLIST RenderOperation *op)
 ##  OUTPUT:
 ##    RETVAL
 
+## Ogre 1.6 API change
+Quaternion *
+Node::_getDerivedOrientation()
+  CODE:
+    RETVAL = new Quaternion;
+    *RETVAL = THIS->_getDerivedOrientation();
+  OUTPUT:
+    RETVAL
+
+Vector3 *
+Node::_getDerivedPosition()
+  CODE:
+    RETVAL = new Vector3;
+    *RETVAL = THIS->_getDerivedPosition();
+  OUTPUT:
+    RETVAL
+
+
+
 void
 Node::setInitialState()
 

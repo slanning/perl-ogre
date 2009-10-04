@@ -128,8 +128,23 @@ Camera::setOrientation(Quaternion *q)
   C_ARGS:
     *q
 
-## const Quaternion & 	getDerivedOrientation ()
-## const Vector3 & 	getDerivedPosition ()
+Quaternion *
+Camera::getDerivedOrientation()
+  CODE:
+    RETVAL = new Quaternion;
+    *RETVAL = THIS->getDerivedOrientation();
+  OUTPUT:
+    RETVAL
+
+Vector3 *
+Camera::getDerivedPosition()
+  CODE:
+    RETVAL = new Vector3;
+    *RETVAL = THIS->getDerivedPosition();
+  OUTPUT:
+    RETVAL
+
+
 ## Vector3 	getDerivedDirection ()
 ## Vector3 	getDerivedUp ()
 ## Vector3 	getDerivedRight ()
