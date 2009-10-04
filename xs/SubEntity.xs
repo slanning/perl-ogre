@@ -37,22 +37,7 @@ SubEntity::getRenderOperation(OUTLIST RenderOperation *op)
 ## xxx: is xform an array?
 ## void SubEntity::getWorldTransforms(Matrix4 *xform)
 
-##Quaternion *
-##SubEntity::getWorldOrientation()
-##  CODE:
-##    RETVAL = new Quaternion;
-##    *RETVAL = THIS->getWorldOrientation();
-##  OUTPUT:
-##    RETVAL
-##
-##Vector3 *
-##SubEntity::getWorldPosition()
-##  CODE:
-##    RETVAL = new Vector3;
-##    *RETVAL = THIS->getWorldPosition();
-##  OUTPUT:
-##    RETVAL
-##
+
 ##bool
 ##SubEntity::getNormaliseNormals()
 
