@@ -1,7 +1,6 @@
 MODULE = Ogre     PACKAGE = Ogre::Root
 
-# static Root & 	getSingleton (void)
-
+## static Root & 	getSingleton (void)
 static Root *
 Root::getSingletonPtr()
 
@@ -59,32 +58,41 @@ Root::setRenderSystem(RenderSystem *system)
 RenderSystem *
 Root::getRenderSystem()
 
-# no customCapabilitiesConfig arg
 RenderWindow *
 Root::initialise(autoCreateWindow, ...)
     bool    autoCreateWindow
   CODE:
     String windowTitle;
-    if (items == 3) {
+    String customCapabilitiesConfig;
+    if (items >= 3) {
         char * xstmpchr = (char *) SvPV_nolen(ST(2));
         windowTitle = xstmpchr;
     }
     else {
         windowTitle = "OGRE Render Window";
     }
-    RETVAL = THIS->initialise(autoCreateWindow, windowTitle);
+    if (items == 4) {
+        char * xstmpchr = (char *) SvPV_nolen(ST(2));
+        customCapabilitiesConfig = xstmpchr;
+        RETVAL = THIS->initialise(autoCreateWindow, windowTitle, customCapabilitiesConfig);
+
+    }
+    else {
+        RETVAL = THIS->initialise(autoCreateWindow, windowTitle);
+    }
   OUTPUT:
     RETVAL
 
 bool
 Root::isInitialised()
 
-# void  useCustomRenderSystemCapabilities (RenderSystemCapabilities *capabilities)
-# void 	addSceneManagerFactory (SceneManagerFactory *fact)
-# void 	removeSceneManagerFactory (SceneManagerFactory *fact)
-# SceneManagerEnumerator::MetaDataIterator 	getSceneManagerMetaDataIterator (void) const
+## void  useCustomRenderSystemCapabilities (RenderSystemCapabilities *capabilities)
+## void 	addSceneManagerFactory (SceneManagerFactory *fact)
+## void 	removeSceneManagerFactory (SceneManagerFactory *fact)
+## SceneManagerMetaData * 	getSceneManagerMetaData (const String &typeName) const 
+## SceneManagerEnumerator::MetaDataIterator 	getSceneManagerMetaDataIterator (void) const
 
-## note: there are 2 variants of this in the C++ API
+## 2 C++ versions
 SceneManager *
 Root::createSceneManager(...)
   CODE:
@@ -118,8 +126,8 @@ SceneManager *
 Root::getSceneManager(instanceName)
     String  instanceName
 
-# xxx: need a perlish version, like ConfigFile::getSections
-# SceneManagerEnumerator::SceneManagerIterator 	getSceneManagerIterator (void)
+## xxx: need a perlish version, like ConfigFile::getSections
+## SceneManagerEnumerator::SceneManagerIterator 	getSceneManagerIterator (void)
 
 TextureManager *
 Root::getTextureManager()
@@ -162,12 +170,12 @@ Root::addResourceLocation(String name, String locType, String groupName=Resource
 void
 Root::removeResourceLocation(String name, String groupName=ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME)
 
-# void 	convertColourValue (const ColourValue &colour, uint32 *pDest)
+## void 	convertColourValue (const ColourValue &colour, uint32 *pDest)
 
 RenderWindow *
 Root::getAutoCreatedWindow()
 
-# RenderWindow * createRenderWindow(const String &name, unsigned int width, unsigned int height, bool fullScreen, const NameValuePairList *miscParams=0)
+## RenderWindow * createRenderWindow(const String &name, unsigned int width, unsigned int height, bool fullScreen, const NameValuePairList *miscParams=0)
 RenderWindow *
 Root::createRenderWindow(name, width, height, fullScreen, ...)
     String        name
@@ -236,8 +244,8 @@ Root::createRenderWindow(name, width, height, fullScreen, ...)
   OUTPUT:
     RETVAL
 
-# xxx: 2 C++ versions, RenderTarget * version missing
-# but you can get the name from the RenderTarget object
+## xxx: 2 C++ versions, RenderTarget * version missing
+## but you can get the name from the RenderTarget object
 void
 Root::detachRenderTarget(name)
     String  name
@@ -254,17 +262,32 @@ void
 Root::unloadPlugin(pluginName)
     String  pluginName
 
-# void 	installPlugin (Plugin *plugin)
-# void 	uninstallPlugin (Plugin *plugin)
-# const PluginInstanceList & 	getInstalledPlugins () const
+## void 	installPlugin (Plugin *plugin)
+## void 	uninstallPlugin (Plugin *plugin)
+## const PluginInstanceList & 	getInstalledPlugins () const
 
-# Timer * 	getTimer (void)
+Timer *
+Root::getTimer (void)
+
+##bool 	_fireFrameStarted (FrameEvent &evt)
+##bool 	_fireFrameRenderingQueued (FrameEvent &evt)
+##bool 	_fireFrameEnded (FrameEvent &evt)
+##bool 	_fireFrameStarted ()
+##bool 	_fireFrameRenderingQueued ()
+##bool 	_fireFrameEnded ()
 
 unsigned long
 Root::getNextFrameNumber()
 
-# RenderQueueInvocationSequence * 	createRenderQueueInvocationSequence (const String &name)
-# RenderQueueInvocationSequence * 	getRenderQueueInvocationSequence (const String &name)
+SceneManager *
+Root::_getCurrentSceneManager()
+
+void
+Root::_setCurrentSceneManager(sm)
+    SceneManager *
+
+## RenderQueueInvocationSequence * 	createRenderQueueInvocationSequence (const String &name)
+## RenderQueueInvocationSequence * 	getRenderQueueInvocationSequence (const String &name)
 
 void
 Root::destroyRenderQueueInvocationSequence(name)
@@ -283,19 +306,17 @@ Root::setFrameSmoothingPeriod(period)
 Real
 Root::getFrameSmoothingPeriod()
 
-# void 	addMovableObjectFactory (MovableObjectFactory *fact, bool overrideExisting=false)
-# void 	removeMovableObjectFactory (MovableObjectFactory *fact)
+## void 	addMovableObjectFactory (MovableObjectFactory *fact, bool overrideExisting=false)
+## void 	removeMovableObjectFactory (MovableObjectFactory *fact)
 
 bool
 Root::hasMovableObjectFactory(typeName)
     String  typeName
 
-# MovableObjectFactory * 	getMovableObjectFactory (const String &typeName)
-# MovableObjectFactoryIterator 	getMovableObjectFactoryIterator (void) const
+## MovableObjectFactory * 	getMovableObjectFactory (const String &typeName)
+## MovableObjectFactoryIterator 	getMovableObjectFactoryIterator (void) const
 
 
+## xxx: possible/useful to bind these?
 ### protected types
-
 ### protected member functions
-
-# xxx: possible/useful to bind these?
