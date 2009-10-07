@@ -1,3 +1,7 @@
+0.40 2009-10-04 | fixed GTK support, kinda
+- minor API improvements
+- added Ogre::Timer
+
 0.39 2009-10-04 | getWorldPosition, getWorldOrientation removed
 - API change for Ogre 1.6, these are not in Renderable and have
   been renamed in Node to _getDerivedPosition and _getDerivedOrientation
