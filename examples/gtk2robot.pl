@@ -174,14 +174,12 @@ sub createRenderWindow {
 
     my $handle = Ogre->getWindowHandleString($self->{drawbutton});
 
-#    my ($w, $h) = $self->{hbox}->get_default_size;
     my $allocation = $self->{drawbutton}->allocation;
     my ($w, $h) = ($allocation->width, $allocation->height);
     $self->{mRenderWindow} =
       $self->{root}->createRenderWindow("OgreRenderWindow",
                                         $w, $h, 0,
                                         {parentWindowHandle => $handle});
-
 }
 
 sub initializeResourceGroups {
@@ -229,7 +227,7 @@ sub setupScene {
 sub update {
     my ($self) = @_;
 
-    $self->{root}->renderOneFrame();
+    #$self->{root}->renderOneFrame();
     $self->{mRenderWindow}->update();
 
     return 1;    # so Timeout repeats
