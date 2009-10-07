@@ -131,6 +131,7 @@ use Ogre::Texture;
 use Ogre::TextureManager;
 use Ogre::TextureUnitState;
 use Ogre::TimeIndex;
+use Ogre::Timer;
 use Ogre::TransformKeyFrame;
 use Ogre::Vector2;
 use Ogre::Vector3;

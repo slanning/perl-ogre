@@ -115,6 +115,7 @@ Texture *	O_TEXTURE
 TextureManager *	O_TEXTUREMANAGER
 TextureUnitState *	O_TEXTUREUNITSTATE
 TimeIndex *	O_TIMEINDEX
+Timer *	O_TIMER
 TransformKeyFrame *	O_TRANSFORMKEYFRAME
 Vector2 *	O_VECTOR2
 Vector3 *	O_VECTOR3
@@ -172,6 +173,7 @@ const TextAreaOverlayElement *	O_TEXTAREAOVERLAYELEMENT
 const Texture *	O_TEXTURE
 const TextureUnitState *	O_TEXTUREUNITSTATE
 const TimeIndex *	O_TIMEINDEX
+const Timer *	O_TIMER
 const Vector3 *	O_VECTOR3
 const Vector4 *	O_VECTOR4
 const VertexAnimationTrack *	O_VERTEXANIMATIONTRACK
@@ -566,6 +568,9 @@ O_TEXTUREUNITSTATE
 O_TIMEINDEX
 	TMOGRE_IN($arg, $var, $type, $Package, $func_name, TimeIndex)
 
+O_TIMER
+	TMOGRE_IN($arg, $var, $type, $Package, $func_name, Timer)
+
 O_TRANSFORMKEYFRAME
 	TMOGRE_IN($arg, $var, $type, $Package, $func_name, TransformKeyFrame)
 
@@ -955,6 +960,9 @@ O_TEXTUREUNITSTATE
 
 O_TIMEINDEX
 	TMOGRE_OUT($arg, $var, TimeIndex)
+
+O_TIMER
+	TMOGRE_OUT($arg, $var, Timer)
 
 O_TRANSFORMKEYFRAME
 	TMOGRE_OUT($arg, $var, TransformKeyFrame)

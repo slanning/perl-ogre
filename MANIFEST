@@ -128,6 +128,7 @@ Ogre/Texture.pm
 Ogre/TextureManager.pm
 Ogre/TextureUnitState.pm
 Ogre/TimeIndex.pm
+Ogre/Timer.pm
 Ogre/TransformKeyFrame.pm
 Ogre/Vector2.pm
 Ogre/Vector3.pm
@@ -308,6 +309,7 @@ xs/Texture.xs
 xs/TextureManager.xs
 xs/TextureUnitState.xs
 xs/TimeIndex.xs
+xs/Timer.xs
 xs/TransformKeyFrame.xs
 xs/Vector2.xs
 xs/Vector3.xs
