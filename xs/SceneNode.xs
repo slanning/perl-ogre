@@ -1,5 +1,53 @@
 MODULE = Ogre     PACKAGE = Ogre::SceneNode
 
+void
+SceneNode::attachObject(obj)
+    MovableObject * obj
+
+unsigned short
+SceneNode::numAttachedObjects()
+
+
+##also virtual MovableObject * 	getAttachedObject (unsigned short index)
+MovableObject *
+SceneNode::getAttachedObject(name)
+    String  name
+
+##also virtual MovableObject * 	detachObject (unsigned short index)
+void
+SceneNode::detachObject(obj)
+    MovableObject * obj
+
+void
+SceneNode::detachAllObjects()
+
+bool
+SceneNode::isInSceneGraph()
+
+## virtual void 	_notifyRootNode (void)
+## virtual void 	_updateBounds (void)
+
+## virtual ObjectIterator 	getAttachedObjectIterator (void)
+## virtual ConstObjectIterator 	getAttachedObjectIterator (void) const 
+
+SceneManager *
+SceneNode::getCreator()
+
+##also virtual void 	removeAndDestroyChild (unsigned short index)
+void
+SceneNode::removeAndDestroyChild(name)
+    String  name
+
+void
+SceneNode::removeAndDestroyAllChildren()
+
+void
+SceneNode::showBoundingBox(bShow)
+    bool  bShow
+
+bool
+SceneNode::getShowBoundingBox()
+
 # SceneNode * createChildSceneNode(const Vector3 &translate=Vector3::ZERO, const Quaternion &rotate=Quaternion::IDENTITY)
 # SceneNode * createChildSceneNode(const String &name, const Vector3 &translate=Vector3::ZERO, const Quaternion &rotate=Quaternion::IDENTITY)
 SceneNode *
@@ -76,40 +124,7 @@ SceneNode::createChildSceneNode(...)
   OUTPUT:
     RETVAL
 
-void
-SceneNode::attachObject(obj)
-    MovableObject * obj
-
-void
-SceneNode::detachObject(obj)
-    MovableObject * obj
-
-SceneNode *
-SceneNode::getParentSceneNode()
-
-unsigned short
-SceneNode::numAttachedObjects()
-
-# ...
-
-void
-SceneNode::detachAllObjects()
-
-void
-SceneNode::removeAndDestroyAllChildren()
-
-bool
-SceneNode::isInSceneGraph()
-
-SceneManager *
-SceneNode::getCreator()
-
-void
-SceneNode::showBoundingBox(bShow)
-    bool  bShow
-
-bool
-SceneNode::getShowBoundingBox()
+## virtual void 	findLights (LightList &destList, Real radius) const 
 
 void
 SceneNode::setFixedYawAxis(useFixed, fixedAxis)
@@ -118,6 +133,13 @@ SceneNode::setFixedYawAxis(useFixed, fixedAxis)
   C_ARGS:
     useFixed, *fixedAxis
 
+void
+SceneNode::yaw(DegRad *angle, int relativeTo=Node::TS_LOCAL)
+  C_ARGS:
+    *angle, (Ogre::Node::TransformSpace)relativeTo
+
+## virtual void 	setDirection (Real x, Real y, Real z, TransformSpace relativeTo=TS_LOCAL, const Vector3 &localDirectionVector=Vector3::NEGATIVE_UNIT_Z)
+## virtual void 	setDirection (const Vector3 &vec, TransformSpace relativeTo=TS_LOCAL, const Vector3 &localDirectionVector=Vector3::NEGATIVE_UNIT_Z)
 void
 SceneNode::setDirection(x, y, z, relativeTo, localDirectionVector)
     Real  x
@@ -128,6 +150,7 @@ SceneNode::setDirection(x, y, z, relativeTo, localDirectionVector)
   C_ARGS:
     x, y, z, (Ogre::Node::TransformSpace)relativeTo, *localDirectionVector
 
+## virtual void 	lookAt (const Vector3 &targetPoint, TransformSpace relativeTo, const Vector3 &localDirectionVector=Vector3::NEGATIVE_UNIT_Z)
 void
 SceneNode::lookAt(targetPoint, relativeTo, localDirectionVector)
     Vector3 * targetPoint
@@ -136,6 +159,7 @@ SceneNode::lookAt(targetPoint, relativeTo, localDirectionVector)
   C_ARGS:
     *targetPoint, (Ogre::Node::TransformSpace)relativeTo, *localDirectionVector
 
+## virtual void 	setAutoTracking (bool enabled, SceneNode *target=0, const Vector3 &localDirectionVector=Vector3::NEGATIVE_UNIT_Z, const Vector3 &offset=Vector3::ZERO)
 void
 SceneNode::setAutoTracking(enabled, target, localDirectionVector, offset)
     bool        enabled
@@ -147,3 +171,22 @@ SceneNode::setAutoTracking(enabled, target, localDirectionVector, offset)
 
 SceneNode *
 SceneNode::getAutoTrackTarget()
+
+## virtual const Vector3 & 	getAutoTrackOffset (void)
+## virtual const Vector3 & 	getAutoTrackLocalDirection (void)
+
+SceneNode *
+SceneNode::getParentSceneNode()
+
+void
+SceneNode::setVisible(bool enabled, bool cascade=true)
+
+void
+SceneNode::flipVisibility(bool cascade=true)
+
+void
+SceneNode::setDebugDisplayEnabled(bool enabled, bool cascade=true)
+
+
+## static void 	queueNeedUpdate (Node *n)
+## static void 	processQueuedUpdates (void)

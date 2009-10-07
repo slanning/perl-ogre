@@ -168,6 +168,12 @@ Camera::setLodBias(Real factor=1.0)
 Real
 Camera::getLodBias()
 
+void
+Camera::setLodCamera(const Camera *lodCam)
+
+const Camera *
+Camera::getLodCamera()
+
 Ray *
 Camera::getCameraToViewportRay(Real screenx, Real screeny)
   CODE:

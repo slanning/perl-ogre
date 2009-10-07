@@ -15,6 +15,10 @@ MovableObject::getParentSceneNode()
 bool
 MovableObject::isAttached()
 
+## sic
+void
+MovableObject::detatchFromParent()
+
 bool
 MovableObject::isInScene()
 
@@ -24,7 +28,6 @@ Real
 MovableObject::getBoundingRadius()
 
 ## const AxisAlignedBox & MovableObject::getWorldBoundingBox(bool derive=false)
-
 ## const Sphere & MovableObject::getWorldBoundingSphere(bool derive=false)
 
 void
@@ -53,6 +56,8 @@ MovableObject::setRenderQueueGroup(uint8 queueID)
 
 uint8
 MovableObject::getRenderQueueGroup()
+
+## virtual const Matrix4 & 	_getParentNodeFullTransform (void) const
 
 void
 MovableObject::setQueryFlags(uint32 flags)
@@ -83,6 +88,7 @@ MovableObject::getVisibilityFlags()
 ## Listener * MovableObject::getListener()
 
 ## const LightList & MovableObject::queryLights()
+## virtual LightList * 	_getLightList ()
 
 EdgeData *
 MovableObject::getEdgeList()
@@ -107,3 +113,11 @@ MovableObject::getPointExtrusionDistance(const Light *l)
 
 uint32
 MovableObject::getTypeFlags()
+
+## virtual void 	visitRenderables (Renderable::Visitor *visitor, bool debugRenderables=false)=0
+
+void
+MovableObject::setDebugDisplayEnabled(bool enabled)
+
+bool
+MovableObject::isDebugDisplayEnabled()
