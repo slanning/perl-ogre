@@ -267,14 +267,14 @@ Root::unloadPlugin(pluginName)
 ## const PluginInstanceList & 	getInstalledPlugins () const
 
 Timer *
-Root::getTimer (void)
+Root::getTimer()
 
-##bool 	_fireFrameStarted (FrameEvent &evt)
-##bool 	_fireFrameRenderingQueued (FrameEvent &evt)
-##bool 	_fireFrameEnded (FrameEvent &evt)
-##bool 	_fireFrameStarted ()
-##bool 	_fireFrameRenderingQueued ()
-##bool 	_fireFrameEnded ()
+## bool 	_fireFrameStarted (FrameEvent &evt)
+## bool 	_fireFrameRenderingQueued (FrameEvent &evt)
+## bool 	_fireFrameEnded (FrameEvent &evt)
+## bool 	_fireFrameStarted ()
+## bool 	_fireFrameRenderingQueued ()
+## bool 	_fireFrameEnded ()
 
 unsigned long
 Root::getNextFrameNumber()
@@ -284,7 +284,7 @@ Root::_getCurrentSceneManager()
 
 void
 Root::_setCurrentSceneManager(sm)
-    SceneManager *
+    SceneManager * sm
 
 ## RenderQueueInvocationSequence * 	createRenderQueueInvocationSequence (const String &name)
 ## RenderQueueInvocationSequence * 	getRenderQueueInvocationSequence (const String &name)

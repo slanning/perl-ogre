@@ -4,16 +4,16 @@ MODULE = Ogre     PACKAGE = Ogre::Timer
 ## Ogre::Timer::setOption(String strKey, const void *pValue)
 
 void
-Ogre::Timer::reset()
+Timer::reset()
 
 unsigned long
-Ogre::Timer::getMilliseconds()
+Timer::getMilliseconds()
 
 unsigned long
-Ogre::Timer::getMicroseconds()
+Timer::getMicroseconds()
 
 unsigned long
-Ogre::Timer::getMillisecondsCPU()
+Timer::getMillisecondsCPU()
 
 unsigned long
-Ogre::Timer::getMicrosecondsCPU()
+Timer::getMicrosecondsCPU()

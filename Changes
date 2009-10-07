@@ -1,4 +1,4 @@
-0.40 2009-10-04 | fixed GTK support, kinda
+0.40 2009-10-07 | fixed GTK support, kinda
 - minor API improvements
 - added Ogre::Timer
 

@@ -21,18 +21,13 @@ RenderSystem::destroyHardwareOcclusionQuery(hq)
 String
 RenderSystem::validateConfigOptions()
 
-##RenderWindow *
-##RenderSystem::initialise(autoCreateWindow, windowTitle=String("OGRE Render Window"))
-##    bool  autoCreateWindow
-##    String  windowTitle
-
 void
 RenderSystem::reinitialise()
 
 void
 RenderSystem::shutdown()
 
-# why are these not Real ?
+## why are these not Real ?
 void
 RenderSystem::setAmbientLight(float r, float g, float b)
 
@@ -49,29 +44,6 @@ RenderSystem::setWBufferEnabled(bool enabled)
 
 bool
 RenderSystem::getWBufferEnabled()
-
-#### xxx: left off final NameValuePairList arg for now
-#### RenderWindow * RenderSystem::createRenderWindow(const String &name, unsigned int width, unsigned int height, bool fullScreen, NameValuePairList *miscParams)
-##RenderWindow *
-##RenderSystem::createRenderWindow(name, width, height, fullScreen)
-##    String  name
-##    unsigned int  width
-##    unsigned int  height
-##    bool  fullScreen
-##  C_ARGS:
-##    name, width, height, fullScreen, 0
-##
-#### xxx: left off final NameValuePairList arg for now
-#### RenderTexture * RenderSystem::createRenderTexture(const String &name, unsigned int width, unsigned int height, TextureType texType=TEX_TYPE_2D, PixelFormat internalFormat=PF_X8R8G8B8, NameValuePairList *miscParams)
-##RenderTexture *
-##RenderSystem::createRenderTexture(name, width, height, texType=TEX_TYPE_2D, internalFormat=PF_X8R8G8B8)
-##    String  name
-##    unsigned int  width
-##    unsigned int  height
-##    int  texType
-##    int  internalFormat
-##  C_ARGS:
-##    name, width, height, (TextureType)texType, (PixelFormat)internalFormat, 0
 
 MultiRenderTarget *
 RenderSystem::createMultiRenderTarget(name)
