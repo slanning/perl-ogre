@@ -46,7 +46,7 @@ Root::showConfigDialog()
 void
 Root::addRenderSystem(RenderSystem *newRend)
 
-# RenderSystemList *
+# RenderSystemList &
 # Root::getAvailableRenderers()
 
 RenderSystem *
@@ -279,12 +279,10 @@ Root::getTimer()
 unsigned long
 Root::getNextFrameNumber()
 
-SceneManager *
-Root::_getCurrentSceneManager()
+## internal
+##SceneManager *
+##Root::_getCurrentSceneManager()
 
-void
-Root::_setCurrentSceneManager(sm)
-    SceneManager * sm
 
 ## RenderQueueInvocationSequence * 	createRenderQueueInvocationSequence (const String &name)
 ## RenderQueueInvocationSequence * 	getRenderQueueInvocationSequence (const String &name)

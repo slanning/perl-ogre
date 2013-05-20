@@ -224,9 +224,6 @@ Material::setSceneBlending(...)
 unsigned short
 Material::getLodIndex(Real d)
 
-unsigned short
-Material::getLodIndexSquaredDepth(Real squaredDepth)
-
 void
 Material::touch()
 

@@ -124,7 +124,7 @@ SceneNode::createChildSceneNode(...)
   OUTPUT:
     RETVAL
 
-## virtual void 	findLights (LightList &destList, Real radius) const 
+## virtual void 	findLights (LightList &destList, Real radius, uint32 lightMask=0xFFFFFFFF) const
 
 void
 SceneNode::setFixedYawAxis(useFixed, fixedAxis)

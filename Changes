@@ -1,3 +1,8 @@
+0.50 2010-12-14 | support Ogre >= 1.7.2
+- dropping support for versions of Ogre before 1.7.2 (released 2010-11-03)
+- removed Readonly (optional) dependence (for one example)
+- ported to 1.7.2
+
 0.40 2009-10-07 | fixed GTK support, kinda
 - minor API improvements
 - added Ogre::Timer

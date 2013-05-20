@@ -117,9 +117,10 @@ Mesh::updateManualLodLevel(index, meshName)
 
 unsigned short
 Mesh::getLodIndex(Real depth)
-
-unsigned short
-Mesh::getLodIndexSquaredDepth(Real squaredDepth)
+  CODE:
+    RETVAL = THIS->getLodStrategy()->transformUserValue(depth);
+  OUTPUT:
+    RETVAL
 
 bool
 Mesh::isLodManual()

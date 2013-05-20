@@ -3,11 +3,6 @@ package Ogre::Node;
 use strict;
 use warnings;
 
-use Ogre::Renderable;
-require Exporter;
-our @ISA = qw(Ogre::Renderable);
-
-
 ########## GENERATED CONSTANTS BEGIN
 require Exporter;
 unshift @Ogre::Node::ISA, 'Exporter';

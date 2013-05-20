@@ -20,13 +20,13 @@ SceneQuery::setWorldFragmentType(int wft)
 int
 SceneQuery::getWorldFragmentType()
 
-## const std::set< WorldFragmentType > * SceneQuery::getSupportedWorldFragmentTypes()
+## virtual const set<WorldFragmentType>::type* Ogre::SceneQuery::getSupportedWorldFragmentTypes(void) const
 ## note: this just returns a list
 void
 SceneQuery::getSupportedWorldFragmentTypes()
   PPCODE:
-    const std::set<SceneQuery::WorldFragmentType> *wfts = THIS->getSupportedWorldFragmentTypes();
-    std::set<SceneQuery::WorldFragmentType>::const_iterator it;
+    const Ogre::set<SceneQuery::WorldFragmentType>::type *wfts = THIS->getSupportedWorldFragmentTypes();
+    Ogre::set<SceneQuery::WorldFragmentType>::type::const_iterator it;
     for (it = wfts->begin(); it != wfts->end(); it++) {
         mXPUSHi((int) *it);
     }

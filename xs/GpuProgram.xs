@@ -73,11 +73,14 @@ GpuProgram::getDefaultParameters()
 bool
 GpuProgram::hasDefaultParameters()
 
-void
-GpuProgram::setSurfaceAndPassLightStates(bool state)
-
 bool
 GpuProgram::getPassSurfaceAndLightStates()
+
+bool
+GpuProgram::getPassFogStates()
+
+bool
+GpuProgram::getPassTransformStates()
 
 String
 GpuProgram::getLanguage()

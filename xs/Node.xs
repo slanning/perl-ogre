@@ -314,22 +314,6 @@ Node::removeAllChildren()
 ## void Node::setListener(Listener *listener)
 ## Listener * Node::getListener()
 
-Material *
-Node::getMaterial()
-  CODE:
-    RETVAL = THIS->getMaterial().getPointer();
-  OUTPUT:
-    RETVAL
-
-# note: returned instead of gotten by reference
-void
-Node::getRenderOperation(OUTLIST RenderOperation *op)
-  C_ARGS:
-    *op
-
-## xxx: is xform an array?
-## void Node::getWorldTransforms(Matrix4 *xform)
-
 ##Quaternion *
 ##Node::getWorldOrientation()
 ##  CODE:

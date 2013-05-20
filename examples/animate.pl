@@ -9,15 +9,6 @@ package MoveDemoListener;
 use strict;
 use warnings;
 
-BEGIN {
-    if (eval { require Readonly }) {
-        Readonly->import();
-    }
-    else {
-        die("Please install the 'Readonly' Perl module from CPAN.\n");
-    }
-}
-
 use Ogre::ExampleFrameListener;
 @MoveDemoListener::ISA = qw(Ogre::ExampleFrameListener);
 
@@ -25,13 +16,9 @@ use Ogre 0.30;
 use Ogre::Quaternion;
 use Ogre::Vector3;
 
-# I made this readonly because I ended up accidentally
-# changing it (it's a reference) in a previous tutorial,
-# and chaos ensued. (Note: I hope to fix the constants in XS some day...)
-my $zerovec = Ogre::Vector3->new(0, 0, 0);
-Readonly my $ZERO => $zerovec;
-my $xvec = Ogre::Vector3->new(1, 0, 0);
-Readonly my $UNIT_X => $xvec;
+# these are readonly, don't change them
+my $ZERO = Ogre::Vector3->new(0, 0, 0);
+my $UNIT_X = Ogre::Vector3->new(1, 0, 0);
 
 
 sub new {
@@ -99,9 +86,7 @@ sub frameStarted {
             else {
                 # rotate the robot
                 my $orient = $self->{mNode}->getOrientation;
-                # xxx: this caused it to crash, somehow because of the ReadOnly.... :/
-                # my $src = $orient * $UNIT_X;
-                my $src = $orient * $xvec;
+                my $src = $orient * $UNIT_X;
                 my $quat = $src->getRotationTo($self->{mDirection});
                 $self->{mNode}->rotate($quat);
             }

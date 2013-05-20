@@ -16,7 +16,7 @@ use Ogre::WindowEventUtilities;
 our $VERSION = 0.38;
 
 BEGIN {
-    if (eval { require OIS && $OIS::VERSION >= 0.04 }) {
+    if (eval { require OIS && $OIS::VERSION >= 0.05 }) {
         require OIS::InputManager;
         OIS::InputManager->import();
         # xxx: these constants don't export right...
@@ -26,7 +26,7 @@ BEGIN {
         OIS::Mouse->import(qw(:MouseButtonID));
     }
     else {
-        die(__PACKAGE__ . " requires OIS 0.04 or greater\n");
+        die(__PACKAGE__ . " requires OIS 0.05 or greater\n");
     }
 }
 

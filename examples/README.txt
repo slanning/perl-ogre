@@ -5,8 +5,9 @@ for OGRE. To run the examples, you need to have two config files
 in the current directory: plugins.cfg and resources.cfg.
 
 plugins.cfg might be a pointer to a system-wide file;
-for example, on Ubuntu you should `ln -s /etc/OGRE/plugins.cfg`.
+for example, on Ubuntu you should `ln -s /usr/share/OGRE/plugins.cfg`.
 
+[XXX: needs updated for 1.7.2]
 resources.cfg is taken from the Samples/Common/bin directory in OGRE,
 but I put it here also. For resources.cfg, you need to make sure
 it points to the Samples directory from OGRE 1.6.
@@ -18,7 +19,8 @@ directory like this:
 
   ln -s $HOME/ogre/src/ogre/v1-6/Samples
 
-Here are brief descriptions of the examples.
+
+Brief descriptions of the examples
 
 - robot.pl: very minimal, just shows a robot that's been rotated
   and scaled a bit (taken from one of the basic OGRE tutorials;
@@ -69,4 +71,5 @@ Here are brief descriptions of the examples.
 - manualobject.pl: use ManualObject to draw arbitrary shapes
   (taken from several wiki articles)
 
-- sdlrobot.pl: render Ogre in an SDL-Perl application
+#- sdlrobot.pl: render Ogre in an SDL-Perl application
+# needs updating

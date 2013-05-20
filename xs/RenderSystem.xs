@@ -115,12 +115,13 @@ void
 RenderSystem::bindGpuProgram(GpuProgram *prg)
 
 void
-RenderSystem::bindGpuProgramParameters(gptype, params)
+RenderSystem::bindGpuProgramParameters(gptype, params, variabilityMask)
     int  gptype
     GpuProgramParameters * params
+    uint16  variabilityMask
   CODE:
     GpuProgramParametersSharedPtr paramsPtr = GpuProgramParametersSharedPtr(params);
-    THIS->bindGpuProgramParameters((GpuProgramType)gptype, paramsPtr);
+    THIS->bindGpuProgramParameters((GpuProgramType)gptype, paramsPtr, variabilityMask);
 
 void
 RenderSystem::bindGpuProgramPassIterationParameters(int gptype)

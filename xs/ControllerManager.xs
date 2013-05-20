@@ -71,6 +71,11 @@ ControllerManager::createTextureWaveTransformer(TextureUnitState *layer, int tty
 
 ControllerReal *
 ControllerManager::createGpuProgramTimerParam(GpuProgramParameters *params, size_t paramIndex, Real timeFactor=1.0f)
+  CODE:
+    GpuProgramParametersSharedPtr paramsPtr = GpuProgramParametersSharedPtr(params);
+    RETVAL = THIS->createGpuProgramTimerParam(paramsPtr, paramIndex, timeFactor);
+  OUTPUT:
+    RETVAL
 
 ## xxx: would need a manager (like for the Listeners) for the Perl-created objects
 ## in order to make this work; for now you have to call clear Controllers, I guess

@@ -15,9 +15,8 @@ MovableObject::getParentSceneNode()
 bool
 MovableObject::isAttached()
 
-## sic
 void
-MovableObject::detatchFromParent()
+MovableObject::detachFromParent()
 
 bool
 MovableObject::isInScene()
