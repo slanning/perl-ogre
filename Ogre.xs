@@ -11,6 +11,8 @@
 #include "PerlOGREControllerFunction.h"
 #include "PerlOGREControllerValue.h"
 
+#include <OGRE/OgreProgressiveMesh.h>
+
 // This object manages FrameListeners, WindowEventListeners...
 PerlOGRECallbackManager pogreCallbackManager;
 
