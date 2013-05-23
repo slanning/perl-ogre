@@ -12,7 +12,7 @@ Quaternion::new(...)
     else if (items == 2) {
         // Quaternion (Real fW=1.0, Real fX=0.0, Real fY=0.0, Real fZ=0.0)
         if (looks_like_number(ST(1))) {
-            RETVAL = new Quaternion((Real)SvNV(ST(1)));
+            RETVAL = new Quaternion((Real)SvNV(ST(1)), 0.0f, 0.0f, 0.0f);
         }
         // Quaternion (const Quaternion &rkQ)
         else if (sv_isobject(ST(1)) && sv_derived_from(ST(1), "Ogre::Quaternion")) {
@@ -31,7 +31,7 @@ Quaternion::new(...)
     else if (items == 3) {
         // Quaternion (Real fW=1.0, Real fX=0.0, Real fY=0.0, Real fZ=0.0)
         if (looks_like_number(ST(1)) && looks_like_number(ST(2))) {
-            RETVAL = new Quaternion((Real)SvNV(ST(1)), (Real)SvNV(ST(2)));
+            RETVAL = new Quaternion((Real)SvNV(ST(1)), (Real)SvNV(ST(2)), 0.0f, 0.0f);
         }
         // Quaternion (const Radian &rfAngle, const Vector3 &rkAxis)
         else if (sv_isobject(ST(2)) && sv_derived_from(ST(2), "Ogre::Vector3")) {
@@ -48,7 +48,7 @@ Quaternion::new(...)
     else if (items == 4) {
         // Quaternion (Real fW=1.0, Real fX=0.0, Real fY=0.0, Real fZ=0.0)
         if (looks_like_number(ST(1)) && looks_like_number(ST(2)) && looks_like_number(ST(3))) {
-            RETVAL = new Quaternion((Real)SvNV(ST(1)), (Real)SvNV(ST(2)), (Real)SvNV(ST(3)));
+            RETVAL = new Quaternion((Real)SvNV(ST(1)), (Real)SvNV(ST(2)), (Real)SvNV(ST(3)), 0.0f);
         }
         // Quaternion (const Vector3 &xaxis, const Vector3 &yaxis, const Vector3 &zaxis)
         else if (sv_isobject(ST(1)) && sv_derived_from(ST(1), "Ogre::Vector3")
