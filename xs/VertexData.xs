@@ -94,5 +94,14 @@ VertexData::convertPackedColour(int srcType, int destType)
   C_ARGS:
     (VertexElementType)srcType, (VertexElementType)destType
 
+#if OGRE_VERSION >= 0x010800
+
+void
+VertexData::allocateHardwareAnimationElements(unsigned short count, bool animateNormals)
+
+#else
+
 void
 VertexData::allocateHardwareAnimationElements(unsigned short count)
+
+#endif

@@ -17,8 +17,17 @@ VertexDeclaration::sort()
 void
 VertexDeclaration::closeGapsInSource()
 
+#if OGRE_VERSION >= 0x010800
+
+VertexDeclaration *
+VertexDeclaration::getAutoOrganisedDeclaration(bool skeletalAnimation, bool vertexAnimation, bool vertexAnimationNormals)
+
+#else
+
 VertexDeclaration *
 VertexDeclaration::getAutoOrganisedDeclaration(bool skeletalAnimation, bool vertexAnimation)
+
+#endif
 
 unsigned short
 VertexDeclaration::getMaxSource()
