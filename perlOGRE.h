@@ -3,10 +3,17 @@
 
 
 #include <Ogre.h>
+
+// I'm not sure what version this changed...
+#if OGRE_VERSION >= 0x010900
+#include <Overlay/OgreBorderPanelOverlayElement.h>
+#include <Overlay/OgrePanelOverlayElement.h>
+#include <Overlay/OgreTextAreaOverlayElement.h>
+#else
 #include <OgreBorderPanelOverlayElement.h>
 #include <OgrePanelOverlayElement.h>
 #include <OgreTextAreaOverlayElement.h>
-
+#endif
 
 // typedefs for deeply nested classes
 typedef Ogre::SceneQuery::WorldFragment WorldFragment;

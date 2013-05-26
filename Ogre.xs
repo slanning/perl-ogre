@@ -25,7 +25,7 @@ PerlOGRECallbackManager pogreCallbackManager;
 // note: I think these have to come after the includes,
 // esp. the gtk+ ones, because otherwise a conflict
 // appears in X11/Xlib.h which refers to Font,
-// and this is cnofused with Ogre::Font)
+// and this is confused with Ogre::Font)
 using namespace std;
 using namespace Ogre;
 

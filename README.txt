@@ -16,7 +16,7 @@ I highly recommend going through them before trying this Perl wrapper.)
 
 DEPENDENCIES
 
-Only versions >= 1.7.2 of OGRE are supported, so you need to install
+Only versions >= 1.8 of OGRE are supported, so you need to install
 that either by building from source or by installing a package.
 You need to install the "dev" versions of packages,
 since this module links against the libraries.
@@ -28,7 +28,7 @@ files needed to build against OGRE, so you should be able to do this:
   pkg-config --cflags OGRE
   pkg-config --modversion OGRE
 
-The last one should say at least 1.7.2.
+The last one should say at least 1.8.
 
 The C++ compiler used by default is `g++`, but you can specify a different
 C++ compiler by setting the "CXX" environmental variable. Anything more,
@@ -79,58 +79,23 @@ You might have to edit Makefile.PL to get it to work for your system.
 If so, please let me know.
 
 
-INSTALLING OGRE UNDER UBUNTU
-
-Here's how I got things set up on Ubuntu Maverick.
-
-Go to the OGRE download page:
-  http://www.ogre3d.org/download/sdk
-There is a link to Ubuntu packages:
-  https://launchpad.net/~ogre-team/+archive/ogre
-
-Do this to set things up:
-  sudo add-apt-repository ppa:ogre-team/ogre
-  sudo apt-get update
-Install OGRE development packages:
-  sudo apt-get install libogre-dev
-
-Optionally install these:
-  sudo apt-get install                                       \
-    libogremain1.7.2-dbg                                     \
-    libogrepaging1.7.2-dbg libogreproperty1.7.2-dbg          \
-    libogrertshadersystem1.7.2-dbg libogreterrain1.7.2-dbg   \
-    ogre-samples-bin ogre-samples-media ogre-samples-source  \
-    ogre-tools ogre-doc                                      \
-    libdevil-dev libdevil1c2
-
-(This also installs libois-1.2.0 and libois-dev, for OIS.)
-I notice that plugins.cfg, Samples, and docs are in /etc/share/OGRE/ .
-$ pkg-config --modversion OGRE
-1.7.2
-$ pkg-config --modversion OIS
-1.2.0
-
-It would be a good idea to install CEGUI, OIS, libdevil, and nVidia Cg
-if those aren't already installed. (I'm not sure if libdevil is needed anymore.)
-
-
 COPYRIGHT AND LICENCE
 
 Please report any patches/bugs/suggestions to <slanning@cpan.org>.
 
-Copyright 2007-2010, Scott Lanning. All rights reserved.
+Copyright 2007-2013, Scott Lanning. All rights reserved.
 
 This Perl library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 The license for OGRE follows
-(from http://ogre.svn.sourceforge.net/viewvc/ogre/trunk/COPYING ):
+(from https://bitbucket.org/sinbad/ogre )
 
 --------------8<-----------------------------------------------------------
 
 OGRE (www.ogre3d.org) is made available under the MIT License.
 
-Copyright (c) 2000-2009 Torus Knot Software Ltd
+Copyright (c) 2000-2013 Torus Knot Software Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

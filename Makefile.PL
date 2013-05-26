@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use ExtUtils::MakeMaker;
 
-my $OGRE_REQ_VERSION = '1.7.2';
+my $OGRE_REQ_VERSION = '1.8.0';
 my $OIS_REQ_VERSION = '0.05';
 
 main();
