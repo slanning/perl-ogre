@@ -88,7 +88,6 @@ use Ogre::Plane;
 use Ogre::PlaneBoundedVolume;
 use Ogre::PlaneBoundedVolumeListSceneQuery;
 use Ogre::Pose;
-use Ogre::ProgressiveMesh;
 use Ogre::Quaternion;
 use Ogre::QueuedRenderableCollection;
 use Ogre::Radian;
@@ -840,8 +839,6 @@ This is the list of classes that are at least partially wrapped.
 =item L<Ogre::PlaneBoundedVolumeListSceneQuery>
 
 =item L<Ogre::Pose>
-
-=item L<Ogre::ProgressiveMesh>
 
 =item L<Ogre::Quaternion>
 

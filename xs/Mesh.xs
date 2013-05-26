@@ -96,9 +96,6 @@ Mesh::clearBoneAssignments()
 
 ## BoneAssignmentIterator Mesh::getBoneAssignmentIterator(void)
 
-## xxx: LodDistanceList is a std::vector, so need to pass in aref
-##void Mesh::generateLodLevels(const LodDistanceList &lodDistances, ProgressiveMesh::VertexReductionQuota reductionMethod, Real reductionValue)
-
 unsigned short
 Mesh::getNumLodLevels()
 

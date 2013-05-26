@@ -86,7 +86,6 @@ Ogre/Plane.pm
 Ogre/PlaneBoundedVolume.pm
 Ogre/PlaneBoundedVolumeListSceneQuery.pm
 Ogre/Pose.pm
-Ogre/ProgressiveMesh.pm
 Ogre/Quaternion.pm
 Ogre/QueuedRenderableCollection.pm
 Ogre/Radian.pm

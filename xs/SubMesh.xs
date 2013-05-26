@@ -54,8 +54,6 @@ SubMesh::setIndexData(data)
 
 ## IndexMap 	blendIndexToBoneIndexMap
 
-## ProgressiveMesh::LODFaceList 	mLodFaceList
-
 ## std::vector< Vector3 > 	extremityPoints
 
 void
