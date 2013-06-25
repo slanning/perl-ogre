@@ -181,6 +181,7 @@ genscripts/genconsts.pl
 genscripts/gendocs.pl
 genscripts/genxsubs.pl
 genscripts/init-class.pl
+genscripts/showmeths.pl
 genscripts/strip-api-docs.pl
 perlOGRE.h
 perlOGREGUI.cpp
