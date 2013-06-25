@@ -280,6 +280,7 @@ xs/Ray.xs
 xs/RaySceneQuery.xs
 xs/RegionSceneQuery.xs
 xs/RenderOperation.xs
+xs/RenderQueue.xs
 xs/RenderSystem.xs
 xs/RenderSystemCapabilities.xs
 xs/RenderTarget.xs
