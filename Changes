@@ -1,10 +1,11 @@
-0.60 2013-05-26 | support Ogre >= 1.8
+0.60 2013-05-26 | support Ogre = 1.8 (not 1.9 yet)
 - patch from Mattia Barbon to fix compilation in Ogre 1.8
   (1.9 is coming soon, so not going to bother with 1.7 anymore)
 - uploaded code to https://github.com/slanning/perl-ogre
 - more patches to fix for Ogre 1.9.1
   - I removed references to Ogre::ProgressiveMesh; it wasn't really used,
     and seems they maybe renamed it to ProgressiveMeshGenerator
+  - 1.9 isn't supported yet; there were some substantial API changes
 
 0.50 2010-12-14 | support Ogre >= 1.7.2
 - dropping support for versions of Ogre before 1.7.2 (released 2010-11-03)

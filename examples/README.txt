@@ -37,10 +37,19 @@ Brief descriptions of the examples
 - buffered.pl: demo of buffered input handling, this implements OGRE's
   "Basic Tutorial 5"
 
-- sky.pl: demo of Terrain, Sky, and Fog, this implements OGRE's
-  "Basic Tutorial 3"
-
-- darksky.pl: same as sky.pl but more evil-looking
+# NB: sky.pl, darksky.pl, and terrain.pl aren't currently working
+# because they used TerrainSceneManager, which was removed in 1.8.0
+# and I haven't fixed them yet
+# http://www.ogre3d.org/tikiwiki/tiki-index.php?page=ByatisNotes
+#- sky.pl: demo of Terrain, Sky, and Fog, this implements OGRE's
+#  "Basic Tutorial 3"
+#
+#- darksky.pl: same as sky.pl but more evil-looking
+#
+#- terrain.pl: implementing OGRE's "Terrain" sample app, this demos
+#  using RaySceneQuery to maintain the camera at a fixed distance
+#  above a terrain (if you've played "Medieval: Total War", it's like
+#  moving the camera over the 3D-battle terrains).
 
 - animate.pl: watch the robot walk
   (note: this is still a little incomplete, so the robot will "moonwalk"
@@ -58,11 +67,6 @@ Brief descriptions of the examples
 
 - skeletalanim.pl: implements OGRE's "SkeletalAnimation" sample application
   (very cool with the ladies sneaking around :)
-
-- terrain.pl: implementing OGRE's "Terrain" sample app, this demos
-  using RaySceneQuery to maintain the camera at a fixed distance
-  above a terrain (if you've played "Medieval: Total War", it's like
-  moving the camera over the 3D-battle terrains).
 
 - lighting.pl: OGRE's "Lighting" sample app, shows how to use ControllerValue
   and ControllerFunction interfaces, as well as using RibbonTrails
