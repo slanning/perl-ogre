@@ -28,7 +28,9 @@ sub gpp_warn_args {
             chomp $str;
             my ($v, $s) = split /\./, $str;
             if (($v == 4 && $s >= 2) || $v > 4) {
-                return {'CCFLAGS' => '-Wno-write-strings'};
+                # http://www.nntp.perl.org/group/perl.perl5.porters/2012/03/msg184347.html
+                my $ccflags = $Config::Config{ccflags} || '';
+                return {'CCFLAGS' => "-Wno-write-strings $ccflags"};
             }
         }
     }
