@@ -684,7 +684,7 @@ This is the list of classes that are at least partially wrapped.
 
 =item L<Ogre::AnimationControllerFunction>
 
-=item L<Ogre::AnimationObject>
+=item L<Ogre::AnimableObject>
 
 =item L<Ogre::AnimationState>
 
