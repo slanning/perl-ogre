@@ -93,6 +93,7 @@ Ogre/Ray.pm
 Ogre/RaySceneQuery.pm
 Ogre/RegionSceneQuery.pm
 Ogre/RenderOperation.pm
+Ogre/RenderQueue.pm
 Ogre/RenderSystem.pm
 Ogre/RenderSystemCapabilities.pm
 Ogre/RenderTarget.pm
